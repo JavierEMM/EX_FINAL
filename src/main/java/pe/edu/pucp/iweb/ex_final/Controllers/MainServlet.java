@@ -20,26 +20,38 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String dniStr = request.getParameter("dni");
-        String contrasena = request.getParameter("contrasena");
-
+        String contrasenaStr = request.getParameter("contrasena");
+        int dni = Integer.parseInt(dniStr);
+        Double contrasena = Double.parseDouble(contrasenaStr);
         EmpleadoDao emppleadoDao = new EmpleadoDao();
         HttpSession session = request.getSession();
-        Empleado empleado = null;
-        try {
-            empleado = emppleadoDao.obtenerEmpleado(Integer.parseInt(dniStr));
-        } catch (SQLException e) {
-            response.sendRedirect(request.getContextPath() + "/LoginServlet");
+
+        if(emppleadoDao.validarUsuario(dniStr,contrasenaStr)!=null){
+            Empleado empleado = null;
+            try {
+                empleado = emppleadoDao.obtenerEmpleado(dni);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            Rol rol = empleado.getRoles().get(0);
+
+            if(rol.getNombre().equalsIgnoreCase("admin")){
+
+            }else if (rol.getNombre().equalsIgnoreCase("gestor")){
+
+            }else if(rol.getNombre().equalsIgnoreCase("vendedor")){
+
+            }
+
+        }else{
+            session.setAttribute("error","Error al iniciar sesion");
+            response.sendRedirect("/LoginServlet");
         }
 
-        Rol rol = empleado.getRoles().get(0);
 
-        if(rol.getNombre().equalsIgnoreCase("admin")){
 
-        }else if (rol.getNombre().equalsIgnoreCase("gestor")){
-
-        }else if(rol.getNombre().equalsIgnoreCase("vendedor")){
 
         }
 
-    }
+
 }
