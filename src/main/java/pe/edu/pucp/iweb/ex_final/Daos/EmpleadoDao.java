@@ -88,4 +88,28 @@ public class EmpleadoDao extends BaseDao{
         }return empleado;
     }
 
+    public  Empleado validarUsuario(String nombreUsuario,String contrasenia){
+
+        Empleado empleado = null;
+
+        String sql = "SELECT (dni - salario) as contrasenia FROM movies.empleado WHERE dni = ?;";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setString(1, nombreUsuario);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+                if (rs.next()) {
+                    int employeeId = rs.getInt(1);
+                    empleado = this.obtenerEmpleado(employeeId);
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return empleado;
+    }
+
 }
