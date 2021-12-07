@@ -5,7 +5,7 @@
         <jsp:include page="/includes/head.jsp"/>
     </head>
     <body>
-        <form>
+        <form method="POST" action="<%=request.getContextPath()%>/MainServlet">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">DNI</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

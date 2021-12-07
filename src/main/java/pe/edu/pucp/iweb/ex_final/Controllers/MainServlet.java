@@ -36,7 +36,7 @@ public class MainServlet extends HttpServlet {
             Rol rol = empleado.getRoles().get(0);
 
             if(rol.getNombre().equalsIgnoreCase("admin")){
-
+                response.sendRedirect(request.getContextPath() + "CarteleraServlet");
             }else{
                 response.sendRedirect(request.getContextPath() + "/CarteleraServlet");
             }
