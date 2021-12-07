@@ -33,6 +33,7 @@ import java.util.ArrayList;
                     cartelera.setSubtitulada(rs.getInt(9));
                     cartelera.setHorario(rs.getString(10));
                     carteleras.add(cartelera);
+
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
