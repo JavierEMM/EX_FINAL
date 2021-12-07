@@ -37,15 +37,13 @@ public class MainServlet extends HttpServlet {
 
             if(rol.getNombre().equalsIgnoreCase("admin")){
 
-            }else if (rol.getNombre().equalsIgnoreCase("gestor")){
-
-            }else if(rol.getNombre().equalsIgnoreCase("vendedor")){
-
+            }else{
+                response.sendRedirect(request.getContextPath() + "/CarteleraServlet");
             }
 
         }else{
             session.setAttribute("error","Error al iniciar sesion");
-            response.sendRedirect("/LoginServlet");
+            response.sendRedirect(request.getContextPath());
         }
 
 
