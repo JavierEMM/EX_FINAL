@@ -1,16 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Usuario
-  Date: 7/12/2021
-  Time: 11:51
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Cartelera</title>
+    <jsp:include page="/includes/head.jsp"/>
 </head>
 <body>
+<jsp:include page="/includes/navbar.jsp"/>
 
+
+
+<jsp:include page="/includes/footer.jsp"/>
 </body>
 </html>
